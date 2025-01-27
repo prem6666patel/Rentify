@@ -159,7 +159,7 @@
 
                     <!-- Details Section -->
                     <div style="flex: 2;" class="DivDetails">
-                        <h3>Category: <%# Eval("category_name") %></h3>
+                       
                         <p><strong>Item Name:</strong> <%# Eval("item_name") %></p>
                         <p><strong>Description:</strong> <%# Eval("discription") %></p>
                         <p><strong>Price:</strong> <%# Eval("price") %> per month</p>

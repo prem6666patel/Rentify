@@ -15,7 +15,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image : url('photos/pic2.jpg');
+            
         }
         .container {
             background:#f4f4f4;
