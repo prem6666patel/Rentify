@@ -75,6 +75,7 @@
                             <asp:ListItem>Vehicle</asp:ListItem>
                          </asp:DropDownList>
               <br />
+              <br />
             <label for="itemName">Item Name:</label>
             <asp:TextBox ID="txtItemName" runat="server"></asp:TextBox>
 

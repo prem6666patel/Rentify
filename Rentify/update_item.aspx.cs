@@ -41,7 +41,8 @@ namespace Rentify
 
                         if (reader.Read())
                         {
-                          //  txtCategory.Text = reader["category_name"].ToString();
+                            ddlCategory.SelectedValue = reader["category_name"].ToString();
+                            //  txtCategory.Text = reader["category_name"].ToString();
                             txtItemName.Text = reader["item_name"].ToString();
                             txtDescription.Text = reader["discription"].ToString();
                             txtPrice.Text = reader["price"].ToString();

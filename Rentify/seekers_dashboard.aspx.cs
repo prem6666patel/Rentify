@@ -96,6 +96,35 @@ namespace Rentify
             }
         }
 
+        private void searchItem(SqlConnection conn)
+        {   
+            string cat = txtSearchCategory.Text;
+
+            string qryItems = "SELECT * FROM tbl_item WHERE discription LIKE '%' + @cat + '%' OR category_name LIKE '%' + @cat + '%'";
+
+            try
+            {
+                using (SqlCommand cmdItems = new SqlCommand(qryItems, conn))
+                {
+                    cmdItems.Parameters.AddWithValue("cat", cat);
+
+                    using (SqlDataAdapter daItems = new SqlDataAdapter(cmdItems))
+                    {
+                        DataTable dtItems = new DataTable();
+                        daItems.Fill(dtItems);
+
+                        rptItems.DataSource = dtItems;
+                        rptItems.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                lblData.Text = "Error loading items: Please try again later.";
+            }
+        }
+
         protected void btnEditDetails_Click(object sender, EventArgs e)
         {
             Session["s_id"] = ViewState["s_id"];
@@ -112,24 +141,24 @@ namespace Rentify
         {
             if (e.CommandName == "Rented")
             {
-                // Retrieve the item ID from the command argument
+                
                 int itemId = Convert.ToInt32(e.CommandArgument);
 
-                // Check if s_id is stored in the ViewState or retrieve it directly from the Session
+               
                 int seekerId = ViewState["s_id"] != null ? Convert.ToInt32(ViewState["s_id"]) : (Session["s_id"] != null ? Convert.ToInt32(Session["s_id"]) : 0);
 
                 if (seekerId == 0)
                 {
-                    // If s_id is still null, display an error or handle appropriately
+                    
                     lblData.Text = "Session expired or invalid user data. Please log in again.";
                     return;
                 }
 
-                // Store item_id and s_id in the Session
+                
                 Session["item_id"] = itemId;
                 Session["s_id"] = seekerId;
 
-                // Redirect to the transaction page
+                
                 Response.Redirect("transaction.aspx");
             }
         }
@@ -139,6 +168,15 @@ namespace Rentify
             Session["email"] = Session["email"];
             Session["password"] = Session["password"];
             Response.Redirect("renting_items.aspx");
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\PREM\\Documents\\prem_vs\\Rentify\\Rentify\\App_Data\\Db_Rentify.mdf;Integrated Security=True";
+            
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            searchItem(conn);
         }
     }
 }

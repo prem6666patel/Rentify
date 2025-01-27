@@ -187,7 +187,7 @@
                                  <!-- Details Section -->
                                  <div style="flex: 2;" class="DivDetails">
                                     
-                                     <p><strong>id  : </strong> <%# Eval("s_id") %></p>
+                                 
                                      <p><strong>name : </strong> <%# Eval("fullname") %></p>
                                      <p><strong>email:</strong> <%# Eval("email") %></p>
                                      <p><strong>contact : </strong> <%# Eval("contact") %></p>

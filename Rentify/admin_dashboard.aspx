@@ -188,8 +188,11 @@
                                     <div style="flex: 2;" class="DivDetails">
                                         <h3>Category: <%# Eval("category_name") %></h3>
                                         <p><strong>Item Name:</strong> <%# Eval("item_name") %></p>
-                                        <p><strong>Description:</strong> <%# Eval("discription") %></p>
-                                        <p><strong>Price:</strong> <%# Eval("price") %> per month</p>
+                                        <p><strong>provider Name:</strong> <%# Eval("fullname") %></p>
+                                        <p><strong>provider email id :</strong> <%# Eval("email") %></p>
+                                        <p><strong>provider contact:</strong> <%# Eval("contact") %></p>
+                                        <p><strong>item Description:</strong> <%# Eval("discription") %></p>
+                                        <p><strong>item Price:</strong> <%# Eval("price") %> per month</p>
                                         <p><strong>Deposit Amount:</strong> <%# Eval("deposit_amount") %></p>
                                         <p><strong>Penalty:</strong> <%# Eval("Penalty") %> per month</p>
                                         <p><strong>Rented?:</strong> <%# Eval("rented") %></p>

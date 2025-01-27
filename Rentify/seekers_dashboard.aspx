@@ -120,6 +120,10 @@
     align-items:center;
     
 }
+.form-control{
+
+    width : 100%;
+}
     </style>
 </head>
 <body>
@@ -166,6 +170,12 @@
 
                 <div class="right-panel">
                     <asp:Label ID="lblData" runat="server" ForeColor="Red"></asp:Label>
+
+                    <div style="margin-bottom: 20px; display: flex; gap: 10px;">
+                        <asp:TextBox ID="txtSearchCategory" runat="server" CssClass="form-control" Placeholder="Enter category"></asp:TextBox>
+                        <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn" OnClick="btnSearch_Click"  />
+                    </div>
+
                     <div class="items">
                         <asp:Repeater ID="rptItems" runat="server" OnItemCommand="rptItems_ItemCommand">
                             <ItemTemplate>

@@ -82,7 +82,7 @@ namespace Rentify
 
         private void LoadProviderItems(SqlConnection conn)
         {
-            string qryItems = "SELECT * from tbl_item";
+            string qryItems = "SELECT * from tbl_item i join tbl_providers p on i.provider_id = p.p_id";
 
             try
             {
