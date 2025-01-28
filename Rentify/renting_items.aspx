@@ -159,7 +159,7 @@
                 </div>
 
                 <!-- Right Panel: Available Items -->
-               
+
                 <div class="right-panel">
                     <asp:Label ID="lblData" runat="server" ForeColor="Red"></asp:Label>
                     <div class="items">
@@ -173,15 +173,21 @@
 
                                     <!-- Details Section -->
                                     <div style="flex: 2;" class="DivDetails">
-                                         <p>start date : <%# Eval("item_name") %></p>
+                                        <p>start date : <%# Eval("item_name") %></p>
                                         <p>start date : <%# Eval("start_date") %></p>
-                                        <p>end  date : <%# Eval("end_date") %></p>
+                                        <p>
+                                            End date: 
+               
+                                            <span style='<%# DateTime.TryParse(Eval("end_date").ToString(), out DateTime endDate) && endDate.Date == DateTime.Now.Date ? "color:red; font-weight:bold;": "" %>'>
+                                                <%# Eval("end_date") %>
+                                            </span>
+                                        </p>
                                         <p>returned : <%# Eval("returned") %></p>
                                         <p>returned : <%# Eval("penalty") %></p>
 
                                         <!-- Buttons -->
                                         <div style="margin-top: 10px;" class="btnstyle">
-                                             <asp:Button ID="btnReturn" runat="server" Text="Renturn Now" CommandName="Return" CommandArgument='<%# Eval("item_id") %>' CssClass="btn" />
+                                            <asp:Button ID="btnReturn" runat="server" Text="Renturn Now" CommandName="Return" CommandArgument='<%# Eval("item_id") %>' CssClass="btn" />
                                         </div>
                                     </div>
                                 </div>
