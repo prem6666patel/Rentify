@@ -13,7 +13,7 @@ namespace Rentify
         protected void Page_Load(object sender, EventArgs e)
         {
             int pid = Convert.ToInt32(Session["p_id"]);
-            lblMessage.Text = pid.ToString();
+           // lblMessage.Text = pid.ToString();
 
             if (!IsPostBack)
             {
@@ -36,7 +36,7 @@ namespace Rentify
                 // Safely retrieve the seeker ID from session
                 int providerId = Convert.ToInt32(Session["p_id"]);
 
-                lblMessage.Text = providerId.ToString();
+                //lblMessage.Text = providerId.ToString();
 
                 // Connection string for the database
                 string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;

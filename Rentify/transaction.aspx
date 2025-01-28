@@ -46,6 +46,52 @@
             background: #45a049;
         }
     </style>
+    <script>
+        window.onload = function () {
+            const startDateInput = document.getElementById('<%= txtStartDate.ClientID %>');
+            const endDateInput = document.getElementById('<%= txtEndDate.ClientID %>');
+            const submitButton = document.getElementById('<%= btnSubmit.ClientID %>');
+
+            const today = new Date();
+            const minDate = today.toISOString().split('T')[0];
+
+            // Set the minimum start date to today
+            startDateInput.setAttribute('min', minDate);
+
+            // Validate dates on submit
+            submitButton.addEventListener('click', function (e) {
+                const startDateValue = new Date(startDateInput.value);
+                const endDateValue = new Date(endDateInput.value);
+
+                if (!startDateInput.value || !endDateInput.value) {
+                    alert('Please select both start and end dates.');
+                    e.preventDefault();
+                    return;
+                }
+
+                // Check if the start date is greater than or equal to today
+                if (startDateValue < today) {
+                    alert('The start date must be today or a future date.');
+                    e.preventDefault();
+                    return;
+                }
+
+                // Check if the difference between dates is one month
+                const oneMonthLater = new Date(startDateValue);
+                oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
+
+                if (
+                    oneMonthLater.getFullYear() !== endDateValue.getFullYear() ||
+                    oneMonthLater.getMonth() !== endDateValue.getMonth() ||
+                    oneMonthLater.getDate() !== endDateValue.getDate()
+                ) {
+                    alert('The gap between the start date and end date must be exactly one month.');
+                    e.preventDefault();
+                    return;
+                }
+            });
+        };
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
