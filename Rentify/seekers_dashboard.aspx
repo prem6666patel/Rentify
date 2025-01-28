@@ -178,31 +178,38 @@
 
                     <div class="items">
                         <asp:Repeater ID="rptItems" runat="server" OnItemCommand="rptItems_ItemCommand">
-                            <ItemTemplate>
-                                <div class="item" style="display: flex; align-items: flex-start; gap: 15px;">
-                                    <!-- Image Section -->
-                                    <div style="flex: 1;">
-                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("image") %>' Height="300px" Width="300px" Style="border-radius: 8px;" />
-                                    </div>
+    <ItemTemplate>
+        <div class="item" style="display: flex; align-items: flex-start; gap: 15px;">
+            <!-- Image Section -->
+            <div style="flex: 1;">
+                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("image") %>' Height="300px" Width="300px" Style="border-radius: 8px;" />
+            </div>
 
-                                    <!-- Details Section -->
-                                    <div style="flex: 2;" class="DivDetails">
-                                       
-                                        <p><strong>Item Name:</strong> <%# Eval("item_name") %></p>
-                                        <p><strong>Description:</strong> <%# Eval("discription") %></p>
-                                        <p><strong>Price:</strong> <%# Eval("price") %> per month</p>
-                                        <p><strong>Deposit Amount:</strong> <%# Eval("deposit_amount") %></p>
-                                        <p><strong>Penalty:</strong> <%# Eval("Penalty") %> per month</p>
-                                        <p>available ? <%# Eval("available") %></p>
+            <!-- Details Section -->
+            <div style="flex: 2;" class="DivDetails">
+                <p><strong>Item Name:</strong> <%# Eval("item_name") %></p>
+                <p><strong>Description:</strong> <%# Eval("discription") %></p>
+                <p><strong>Price:</strong> <%# Eval("price") %> per month</p>
+                <p><strong>Deposit Amount:</strong> <%# Eval("deposit_amount") %></p>
+                <p><strong>Penalty:</strong> <%# Eval("Penalty") %> per month</p>
+                <p><strong>Available?</strong> <%# Eval("available") %></p>
 
-                                        <!-- Buttons -->
-                                        <div style="margin-top: 10px;" class="btnstyle">
-                                            <asp:Button ID="btnRented" runat="server" Text="Rent Now" CommandName="Rented" CommandArgument='<%# Eval("item_id") %>' CssClass="btn" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
+                <!-- Buttons -->
+                <div style="margin-top: 10px;" class="btnstyle">
+                    <asp:Button 
+                        ID="btnRented" 
+                        runat="server" 
+                        Text="Rent Now" 
+                        CommandName="Rented" 
+                        CommandArgument='<%# Eval("item_id") %>' 
+                        CssClass="btn" 
+                        Visible='<%# string.Equals(Eval("available").ToString().Trim(), "Yes", StringComparison.OrdinalIgnoreCase) %>' />
+                </div>
+            </div>
+        </div>
+    </ItemTemplate>
+</asp:Repeater>
+
                     </div>
                 </div>
             </div>
