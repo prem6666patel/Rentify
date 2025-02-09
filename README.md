@@ -31,4 +31,4 @@ Technologies Used:
 Frontend :- HTML , CSS , JAVASCRIPT
 Backend :-  C#
 Framework :- ASP .NET
-Database :-  LocalDB
+Database :-  sql server database 
